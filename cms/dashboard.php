@@ -41,8 +41,46 @@
                 </Div>
             </div>
            <div id="sessao">
-           </div>
-       </div>
+       <div id="consultaDeDados">
+            <table id="tblConsulta" >
+                <tr>
+                    <td id="tblTitulo" colspan="6">
+                        <h1> Consulta de Dados.</h1>
+                    </td>
+                </tr>
+                <tr id="tblLinhas">
+                    <td class="tblcontato destaque">Nome</td>
+                    <td class="tblcontato destaque">Celular</td>
+                    <td class="tblcontato destaque">Email</td>
+                    <td class="tblcontato destaque">Opções</td> 
+                </tr>
+                <?php
+                    require_once('controller/controllerContato.php');
+                         $listaContato = listarContato();
+                    if($listaContato){
+                    foreach ($listaContato as $item)
+                    {
+                ?>
+               
+               
+                <tr id="tblLinhas">
+                    <td class="tblColunas registros"><?=$item['nome']?></td>
+                    <td class="tblColunas registros"><?=$item['celular']?></td>
+                    <td class="tblColunas registros"><?=$item['email']?></td>
+                   
+               
+                <td class="tblColunas registros">
+                <a onclick="return confirm('Deseja realmente Excluir este item?');" href="router.php?component=contatos&action=deletar&id=<?=$item['id']?>">
+                            <img src="img/trash.png" alt="Excluir" title="Excluir" class="excluir">
+                </a>
+                </td>
+             </tr>
+                 <?php
+               } 
+            }
+               ?>
+            </table>
+        </div>
    </main>
 </body>
 </html>
