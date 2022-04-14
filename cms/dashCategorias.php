@@ -2,12 +2,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/dash.css">
+    <link rel="stylesheet" href="css/categorias.css">
     <title>.</title>
 </head>
 <body>
    <main>
-    <div id=caixa>
+       <div id=caixa>
            <div id="topo">
                 <div id="titulo">
                     <p class="cms">CMS</p>
@@ -16,8 +16,9 @@
                 </div>
                 <div id="img">
                     <img id="logo"src="img/Tg.png" alt="">
+
                 </div>
-            </div>
+           </div>
            <div id="atalhos">
                <div id="buttons">  
                    <button id=adm>
@@ -39,9 +40,37 @@
                     </button>
                 </Div>
             </div>
-        <div id="sessao">
-
+           <div id="sessao">
+           <div id="consultaDeDados">
+            <table id="tblConsulta" >
+                <tr>
+                    <td id="tblTitulo" colspan="6">
+                        <h1> Categorias</h1>
+                    </td>
+                </tr>
+                <tr id="tblLinhas">
+                    <td class="tblcontato destaque">Nome</td>
+                </tr>
+                <?php
+                    require_once('controller/controllerCategorias.php');
+                    $listacategoria = listarCategoria();
+                    
+                    if($listacategoria){
+                        foreach ($listacategoria as $item) {
+                ?>
+                <tr id="tblLinhas">
+                    <td class="tblColunas registros"><?=$item['name']?>
+                        <a onclick="return confirm('Deseja realmente Excluir este item?');" href="router.php?component=categorias&action=deletar&id=<?=$item['id']?>">
+                                    <img src="img/trash.png" alt="Excluir" title="Excluir" class="excluir">
+                        </a>
+                    </td>
+                </tr>
+                <?php
+                        } 
+                    }
+                ?>
+            </table>
         </div>
-    </main>
+   </main>
 </body>
 </html>
