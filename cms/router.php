@@ -44,11 +44,38 @@
                         </script>");
                     }
         }
-        case "CATEGORIAS";
+        case "CATEGORIA";
             
             require_once("Controller/controllerCategorias.php");
 
-            if($action =='DELETAR'){
+           
+
+            if($action == 'INSERIR'){
+                
+                // if(isset($_FILES) && !empty($_FILES)){
+                //     $resposta = inserirCategoria($_POST, $_FILES);
+                // }else{
+                //     $resposta = inserirCategoria($_POST, null);
+                // }
+                
+
+                $resposta = inserirCategoria($_POST);
+                var_dump($resposta);
+                if(is_bool($resposta)){
+
+                    if($resposta){
+                        echo("<script>
+                        alert('Registro inserido com sucesso');
+                        window.location.href = 'dashCategorias.php'</script>");
+                    }elseif (is_array($resposta)){
+                    echo("<script>
+                            alert('".$resposta['message']."');
+                            window.history.back();
+                            </script>");
+                        }
+                }
+
+            }else if($action =='DELETAR'){
                 //recebe o id do registro q devera ser excluido, que foi enviado pela url no link da img do excluir que foi acionado na index
                 $idCategorias = $_GET['id'];
 

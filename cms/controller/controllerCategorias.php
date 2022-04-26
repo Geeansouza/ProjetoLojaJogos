@@ -1,5 +1,5 @@
 <?php
-function inserirContato($dadosCategoria){
+function inserirCategoria($dadosCategoria){
     if(!empty($dadosCategoria)){
       if(!empty($dadosCategoria["txtCategoria"])){
         $arrayDados = array(
@@ -19,7 +19,7 @@ function inserirContato($dadosCategoria){
           "message" => "existem campos obrigatorios que não foram preenchidos!!!");
       }
     }
-  }
+}
   function excluirCategoria($id){
     if($id != 0 && !empty($id) && is_numeric($id)){
       require_once("./model/bd/categoria.php");

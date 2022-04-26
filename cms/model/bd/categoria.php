@@ -7,7 +7,7 @@
         $conexao = conexaoMysql();
 
         $sql = "insert into tblcategorias
-                (name)
+                (categoria)
                 values(
             '".$dadosCategoria["categoria"]."');"; 
             
@@ -26,17 +26,17 @@
     
 function selectAllCategorias(){
         $conexao = conexaoMysql();
-        $sql = "select * from tblcategorias order by categoria_id desc";
+        $sql = "select * from tblcategorias order by idcategorias desc";
         $result = mysqli_query($conexao, $sql);
     
         if($result)
         {
-          $cont =0;
+          $cont = 0;
           while($rsDados = mysqli_fetch_assoc($result))
           {
             $arrayDados[$cont] = array(
-              "id"        => $rsDados["categoria_id"],
-              "name"      => $rsDados["name"],
+              "id"        => $rsDados["idcategorias"],
+              "name"      => $rsDados["categoria"],
             );
             $cont++;
           }   

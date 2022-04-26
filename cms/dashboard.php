@@ -24,10 +24,14 @@
                         <img id="admin" src="img/admin.jpg" alt="">
                     </button>
                     <button id=categorias>
-                        <img id="admin" src="img/categorias.png" alt="">
+                        <a href="dashCategorias.php">
+                            <img id="admin" src="img/categorias.png" alt="">
+                        </a>
                     </button>
                     <button id=contatos>
-                        <img id="admin" src="img/contato.jpg" alt="">
+                        <a href="DashContatos.php">
+                            <img id="admin" src="img/contato.jpg" alt="">
+                        </a>
                     </button>
                     <button id=usuarios>
                         <img id="admin" src="img/user.png" alt="">

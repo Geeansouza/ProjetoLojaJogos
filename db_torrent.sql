@@ -18,6 +18,30 @@ USE `db_torrent_games`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `tblcategorias`
+--
+
+DROP TABLE IF EXISTS `tblcategorias`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tblcategorias` (
+  `idcategorias` int NOT NULL AUTO_INCREMENT,
+  `categoria` varchar(100) NOT NULL,
+  PRIMARY KEY (`idcategorias`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tblcategorias`
+--
+
+LOCK TABLES `tblcategorias` WRITE;
+/*!40000 ALTER TABLE `tblcategorias` DISABLE KEYS */;
+INSERT INTO `tblcategorias` VALUES (1,'rpg'),(2,'corrida');
+/*!40000 ALTER TABLE `tblcategorias` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `tblcontato`
 --
 
@@ -31,7 +55,7 @@ CREATE TABLE `tblcontato` (
   `celular` varchar(15) NOT NULL,
   `message` text NOT NULL,
   PRIMARY KEY (`idcontato`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,6 +66,10 @@ LOCK TABLES `tblcontato` WRITE;
 /*!40000 ALTER TABLE `tblcontato` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tblcontato` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping routines for database 'db_torrent_games'
+--
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -52,4 +80,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-07 16:56:06
+-- Dump completed on 2022-04-26 16:50:33
