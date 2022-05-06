@@ -24,6 +24,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/categorias.css">
+    <link rel="stylesheet" href="css/cssCategorias/Header.css">
     <title>.</title>
 </head>
 <body>
@@ -86,17 +87,16 @@
                         </div>
                         </div>
                     </div>
-
                 <div id="consultaDeDados">
-
-                    <table id="tblConsulta" >
+                    <table id="tblConsulta">
                         <tr>
-                            <td id="tblTitulo" colspan="6">
+                            <th id="tblTitulo" colspan="6">
                                 <h1> Categorias</h1>
-                            </td>
+                            </th>
                         </tr>
-                        <tr id="tblLinhas">
+                        <tr id="tblLinhasNome">
                             <td class="tblcontato destaque">Nome</td>
+                            <td class="tblcontato destaque">Opção</td>
                         </tr>
                 <?php
                     require_once('controller/controllerCategorias.php');
@@ -106,9 +106,9 @@
                         foreach ($listacategoria as $item) {
                 ?>
                 <tr id="tblLinhas">
-                    <td class="tblColunas registros"><?=$item['name']?>
+                    <td class="tblColunas_registros"><?=$item['name']?>
                         <a onclick="return confirm('Deseja realmente Excluir este item?');" href="router.php?component=categoria&action=deletar&id=<?=$item['id']?>">
-                                    <img src="img/trash.png" alt="Excluir" title="Excluir" class="excluir">
+                            <img src="img/trash.png" alt="Excluir" title="Excluir" class="excluir">
                         </a>
                     </td>
                 </tr>
