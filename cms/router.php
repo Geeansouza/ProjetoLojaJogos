@@ -48,8 +48,6 @@
             
             require_once("Controller/controllerCategorias.php");
 
-           
-
             if($action == 'INSERIR'){
                 
                 // if(isset($_FILES) && !empty($_FILES)){
@@ -60,7 +58,7 @@
                 
 
                 $resposta = inserirCategoria($_POST);
-                var_dump($resposta);
+                var_dump    ($resposta);
                 if(is_bool($resposta)){
 
                     if($resposta){
@@ -84,6 +82,7 @@
                 
                 if(is_bool($resposta)){
                     if($resposta){
+                        
                         echo("<script>
                         alert('Registro excluido com sucesso!');
                         window.location.href = 'dashCategorias.php'</script>");

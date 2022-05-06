@@ -49,11 +49,11 @@ function selectAllCategorias(){
               return false;
         }
       }
-      function deleteCategoria($id){
+function deleteCategoria($id){
 
         $conexao = conexaoMysql();
     
-        $sql = "delete from tblcategorias where categoria_id =".$id;
+        $sql = "delete from tblcategorias where idcategorias =".$id;
         
         
 
@@ -72,4 +72,10 @@ function selectAllCategorias(){
 
         return $statusResultado;
       }
+function updateCategorias(){
+  $statusResultado = (boolean) false;
+
+  //abrindo conexão com o bd
+  $conexao = conexaoMysql();
+}
 ?>

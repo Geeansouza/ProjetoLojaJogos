@@ -70,19 +70,23 @@
             <div id="cadastroInformacoes">
                 <!-- enctype="multipart/form-data essa opção é obrigatoria para enviar arquivos do formulario em htmlk para o servidor -->
                 <form  action="<?=$form?>" name="frmCadastro" method="post" enctype="multipart/form-data">
+                
                     <div class="campos">
                         <div class="cadastroInformacoesPessoais">
-                            <label> Categorias:</label>
+                            <label>adicione uma categoria</label>
                         </div>
+                        <div id="adiconarSalvar">
                         <div class="cadastroEntradaDeDados">
-                            <input type="text" name="txtCategoria" value="<?=isset($categoria)?$categoria:null ?>" placeholder="Digite a Categoria" maxlength="100">
+                            <input type="text" name="txtCategoria" value="<?=isset($categoria)?$categoria:null ?>" placeholder="Digite a Categoria" maxlength="100" id="inputText">
                         </div>
-                    </div>
-                    <div class="enviar">
                         <div class="enviar">
-                            <input type="submit" name="btnEnviar" value="Salvar">
+                            <button type="submit" name="btnEnviar" value="Salvar">
+                                <img src="img/salvar.png" alt="" id="imgSalvarCategoria">
+                            </button>
+                        </div>
                         </div>
                     </div>
+
                 <div id="consultaDeDados">
 
                     <table id="tblConsulta" >
@@ -103,7 +107,7 @@
                 ?>
                 <tr id="tblLinhas">
                     <td class="tblColunas registros"><?=$item['name']?>
-                        <a onclick="return confirm('Deseja realmente Excluir este item?');" href="router.php?component=categorias&action=deletar&id=<?=$item['id']?>">
+                        <a onclick="return confirm('Deseja realmente Excluir este item?');" href="router.php?component=categoria&action=deletar&id=<?=$item['id']?>">
                                     <img src="img/trash.png" alt="Excluir" title="Excluir" class="excluir">
                         </a>
                     </td>
