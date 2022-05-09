@@ -74,11 +74,20 @@
                 
                     <div class="campos">
                         <div class="cadastroInformacoesPessoais">
-                            <label>adicione uma categoria</label>
+                            <label>adicione um Usuario</label>
                         </div>
                         <div id="adiconarSalvar">
                         <div class="cadastroEntradaDeDados">
-                            <input type="text" name="txtCategoria" value="<?=isset($categoria)?$categoria:null ?>" placeholder="Digite a Categoria" maxlength="100" id="inputText">
+                            <input type="text" name="txtNome" value="<?=isset($nome)?$nome:null ?>" placeholder="Digite seu Nome" maxlength="100" id="inputText">
+                        </div>
+                        <div>
+                            <input type="text" name="txtUsuario" value="<?=isset($usuario)?$usuario:null?>" placeholder="Digite o Usuario" maxlength="15" id="inputText">
+                        </div>
+                        <div>
+                            <input type="text" name="txtEmail" value="<?=isset($email)?$senha:null?>" placeholder="Digite um Email" maxlength="150" id="inputText">
+                        </div>
+                        <div>
+                            <input type="text" name="txtSenha" value="<?=isset($senha)?$senha:null?>" placeholder="Digite uma Senha" maxlength="75" id="inputText">
                         </div>
                         <div class="enviar">
                             <button type="submit" name="btnEnviar" value="Salvar">
@@ -99,7 +108,7 @@
                             <td class="tblcontato destaque">Opção</td>
                         </tr>
                 <?php
-                    require_once('controller/controllerCategorias.php');
+                    require_once('controller/controllerUsuarios.php');
                     $listacategoria = listarCategoria();
 
                     if($listacategoria){
@@ -107,10 +116,10 @@
                 ?>
                 <tr id="tblLinhas">
                     <td class="tblColunas_registros"><?=$item['name']?>
-                        <a onclick="return confirm('Deseja realmente Excluir este item?');" href="router.php?component=categoria&action=deletar&id=<?=$item['id']?>">
+                        <a onclick="return confirm('Deseja realmente Excluir este item?');" href="router.php?component=usuario&action=deletar&id=<?=$item['id']?>">
                             <img src="img/trash.png" alt="Excluir" title="Excluir" class="excluir">
                         </a>
-                        <a href="router.php?component=categorias&action=buscar&id=<?=$item['id']?>">
+                        <a href="router.php?component=usuario&action=buscar&id=<?=$item['id']?>">
                             <img src="img/edicao.png" class="excluir" alt="">
                         </a>
                     </td>
