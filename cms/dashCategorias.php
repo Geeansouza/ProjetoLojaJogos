@@ -1,19 +1,19 @@
 <?php
 //variavel criada para diferenciar no action do formulario qual ação deveria ser levada para a router (inserir ou editar).
     //nas condições abaixo, mudamos o action dessa variavel para a ação de editar.
-    $form = (string)"router.php?component=categoria&action=inserir";
+    $form = (string)"router.php?component=categorias&action=inserir";
     //valida se a utilização de variaveis de sessao esta ativa no servidor
     if(session_status()){
         //valida se a variavel de sessao dados contato não esta vazia
-         if(!empty($_SESSION['dadosContato'])){
-             $id        = $_SESSION['dadosContato']['id'];
-             $categoria = $_SESSION['dadosContato']['categoria'];
+         if(!empty($_SESSION['dadosCategoria'])){
+             $id        = $_SESSION['dadosCategoria']['idcategorias'];
+             $categoria = $_SESSION['dadosCategoria']['categoria'];
 
              //mudamos a ação do form para editar o registro no click do bt "salvar"
-             $form = "router.php?component=categoria&action=editar&id=".$id;
+             $form = "router.php?component=categorias&action=editar&id=".$id;
 
              //destroi uma variavel da memoria do server
-             unset($_SESSION['dadosContato']);
+             unset($_SESSION['dadosCategoria']);
          }
     }
 
@@ -106,8 +106,8 @@
                         foreach ($listacategoria as $item) {
                 ?>
                 <tr id="tblLinhas">
-                    <td class="tblColunas_registros"><?=$item['name']?>
-                        <a onclick="return confirm('Deseja realmente Excluir este item?');" href="router.php?component=categoria&action=deletar&id=<?=$item['id']?>">
+                    <td class="tblColunas_registros"><?=$item['categoria']?>
+                        <a onclick="return confirm('Deseja realmente Excluir este item?');" href="router.php?component=categorias&action=deletar&id=<?=$item['id']?>">
                             <img src="img/trash.png" alt="Excluir" title="Excluir" class="excluir">
                         </a>
                         <a href="router.php?component=categorias&action=buscar&id=<?=$item['id']?>">

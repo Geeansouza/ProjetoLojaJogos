@@ -14,11 +14,12 @@
  require_once('conexaoMySql.php');
 
 function insertUsuario($dadosUsuario){
+
     
     $conexao =conexaoMysql();
 
     $sql = "insert into tblusuarios
-            (nome,
+            (name,
             usuario,
             email,
             senha)
@@ -111,7 +112,7 @@ function selectAllUsuarios() {
 
             $arrayDados{$cont} = array(
                 "id" => $rsDados['idusuario'],
-                "nome" => $rsDados['nome'],
+                "nome" => $rsDados['name'],
                 "usuario" => $rsDados['usuario'],
                 "email" => $rsDados['email'],
                 "senha" => $rsDados['senha']

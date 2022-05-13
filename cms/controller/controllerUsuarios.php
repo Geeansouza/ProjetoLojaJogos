@@ -9,7 +9,6 @@
  *********************************************/
 
 function inserirUsuario ($dadosUsuario){
-    $nomeFoto = (string) null;
 
     if(!empty($dadosUsuario)){
         if(!empty($dadosUsuario['txtNome']) && !empty($dadosUsuario['txtUsuario']) && !empty($dadosUsuario['txtEmail']) && !empty($dadosUsuario['txtSenha'])){
@@ -21,13 +20,17 @@ function inserirUsuario ($dadosUsuario){
                 "senha" => $dadosUsuario['txtSenha']
             );
 
-            require_once('model/bd/usuarios.php');
+           
 
-            if(insertUsuario($arrayDados)){
+          
+            require_once('./model/bd/usuarios.php');
+
+            if(insertUsuario($arrayDados)){ 
                 return true;
             }else{
                 return array('idErro' => 1,
                 'message' => 'Não foi possivel inserir os dados no banco de dados');
+                
             }
         }
         else{
@@ -72,7 +75,7 @@ function excluirUsuario($arrayDados){
     $id = $arrayDados['id'];
 
     if($id != 0 && !empty($id) && is_numeric($id)){
-        if(deleteContato($id)){
+        if(deleteUsuario($id)){
             return true;
         }else{
             return array('idErro' => 3, 'message' => 'o banco de dados não pode excluir o registro.');
@@ -96,7 +99,7 @@ function buscarUsuario($id){
     if($id !=0 && !empty($id) && is_numeric($id)){
         require_once('model/bd/contato.php');
 
-        $dados = selectByIdUsuario($id);
+        // $dados = selectByIdUsuario($id);
 
         if(!empty($dados)){
             return $dados;
