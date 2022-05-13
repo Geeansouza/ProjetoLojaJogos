@@ -84,7 +84,7 @@
                             <input type="text" name="txtUsuario" value="<?=isset($usuario)?$usuario:null?>" placeholder="Digite o Usuario" maxlength="15" id="inputText">
                         </div>
                         <div>
-                            <input type="text" name="txtEmail" value="<?=isset($email)?$senha:null?>" placeholder="Digite um Email" maxlength="150" id="inputText">
+                            <input type="text" name="txtEmail" value="<?=isset($email)?$email:null?>" placeholder="Digite um Email" maxlength="150" id="inputText">
                         </div>
                         <div>
                             <input type="text" name="txtSenha" value="<?=isset($senha)?$senha:null?>" placeholder="Digite uma Senha" maxlength="75" id="inputText">
@@ -100,7 +100,7 @@
                     <table id="tblConsulta">
                         <tr>
                             <th id="tblTitulo" colspan="6">
-                                <h1> Categorias</h1>
+                                <h1> usuarios</h1>
                             </th>
                         </tr>
                         <tr id="tblLinhasNome">

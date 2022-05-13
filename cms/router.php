@@ -139,77 +139,77 @@
 
                 if($action == 'INSERIR'){
 
-                   
-                $resposta = inserirUsuario($_POST);
+                    
+                    $resposta = inserirUsuario($_POST);
 
-                if(is_bool($resposta)){
-                    if($resposta){
+                    if(is_bool($resposta)){
+                        if($resposta){
+                            echo("<script>
+                            alert('Registro inserido com sucesso');
+                            window.location.href = 'dashUsuarios.php'</script>");
+                        }
+                        }elseif(is_array($resposta)){
+                            echo("<script>
+                            alert('".$resposta['message']."');
+                            window.history.back();
+                            </script>");
+                        }   
+                }else if($action == 'DELETAR'){
+                    $idusuarios = $_GET['id'];
+
+                    $arrayDados = array(
+                        "id" => $idusuarios
+                    );
+
+                    $resposta = excluirUsuario($arrayDados);
+
+                    if(is_bool($resposta)){
+                        if($resposta){
+                            echo("<script>
+                                    alert('Registro excluido com sucesso!');
+                                    window.location.href = 'dashUsuarios.php'</script>");
+                        }
+                    }else if (is_array($resposta)){
                         echo("<script>
-                        alert('Registro inserido com sucesso');
-                        window.location.href = 'dashUsuarios.php'</script>");
+                        alert('".$resposta['message']."');
+                        window.history.back();
+                        </script>");
                     }
+                
+                }else if ($action == 'BUSCAR'){
+                    $idusuarios = $_GET['id'];
+
+                    $dados = buscarUsuario($idusuarios);
+
+                    // session_start();
+
+                    $_SESSION['dadosContato'] = $dados;
+
+                    require_once('dashUsuarios.php');
+
+                }else if($action == 'EDITAR'){
+                    $idusuarios = $_GET['id'];
+
+                    $arrayDados = array (
+                        "id" =>$idusuarios
+                    );
+
+
+                    $resposta = atualizarUsuario($_POST, $arrayDados);
+
+                    if(is_bool($resposta)){
+                        if($resposta){
+                            echo("<script>
+                            alert('Registro Atualizado com sucesso');
+                            window.location.href = 'dashUsuarios.php'</script>");
+                        }
+                    
                     }elseif(is_array($resposta)){
                         echo("<script>
                         alert('".$resposta['message']."');
                         window.history.back();
                         </script>");
-                    }   
-                }else if($action == 'DELETAR'){
-                $idusuarios = $_GET['id'];
-
-                $arrayDados = array(
-                    "id" => $idusuarios
-                );
-
-                $resposta = excluirUsuario($arrayDados);
-
-                if(is_bool($resposta)){
-                    if($resposta){
-                        echo("<script>
-                                alert('Registro excluido com sucesso!');
-                                window.location.href = 'dashUsuarios.php'</script>");
                     }
-                }else if (is_array($resposta)){
-                    echo("<script>
-                    alert('".$resposta['message']."');
-                    window.history.back();
-                    </script>");
-                }
-                
-                }else if ($action == 'BUSCAR'){
-                $idusuarios = $_GET['id'];
-
-                $dados = buscarUsuario($idusuarios);
-
-                // session_start();
-
-                $_SESSION['dadosContato'] = $dados;
-
-                require_once('dashUsuarios.php');
-
-                }else if($action == 'EDITAR'){
-                $idusuarios = $_GET['id'];
-
-                $arrayDados = array (
-                    "id" =>$idusuarios
-                );
-
-
-                $resposta = atualizarUsuario($_POST, $arrayDados);
-
-                if(is_bool($resposta)){
-                    if($resposta){
-                        echo("<script>
-                        alert('Registro Atualizado com sucesso');
-                        window.location.href = 'dashUsuarios.php'</script>");
-                    }
-                
-                }elseif(is_array($resposta)){
-                    echo("<script>
-                    alert('".$resposta['message']."');
-                    window.history.back();
-                    </script>");
-                }
                 }
                 break;
         

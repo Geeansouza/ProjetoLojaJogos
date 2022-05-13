@@ -19,7 +19,7 @@ function insertUsuario($dadosUsuario){
     $conexao =conexaoMysql();
 
     $sql = "insert into tblusuarios
-            (name,
+            (nome,
             usuario,
             email,
             senha)
@@ -29,18 +29,20 @@ function insertUsuario($dadosUsuario){
         '".$dadosUsuario['email']."',
         '".$dadosUsuario['senha']."');";
 
+
+    
     if(mysqli_query($conexao, $sql)){
 
         if(mysqli_affected_rows($conexao)){
-            fecharConexaoMySql($conexao);
+           
             $statusResposta = true;
         }
         else{
-            fecharConexaoMySql($conexao);
+            
             $statusResposta = false;
         }
     }else{
-        fecharConexaoMySql($conexao);
+       
         $statusResposta = false;
     }
         fecharConexaoMySql($conexao);
@@ -86,17 +88,20 @@ function deleteUsuario($id){
      $sql = "delete from tblusuarios where idusuario=".$id;
 
          //valida se o script esta correto, sem erro de sixtaxe e executa o BD
-    if(mysqli_query($conexao, $sql)){
-
-        //valida se o BD teve sucesso na execução do script
-        if(mysqli_affected_rows($conexao))
-        $statusRespota =true;
-    }
-
-    //fecha a conexão com o BD mySql
-    fecharConexaoMySql($conexao);
-
-    return $statusRespota;
+         if(mysqli_query($conexao, $sql)){
+            if(mysqli_affected_rows($conexao)){
+                $statusResultado = true;
+            }else{
+                $statusResultado = false;
+            }
+      
+           }else{
+            $statusResultado = false;
+           }
+      
+          fecharConexaoMysql($conexao);
+  
+          return $statusResultado;
 }
 function selectAllUsuarios() {
     $conexao = conexaoMysql();
@@ -112,7 +117,7 @@ function selectAllUsuarios() {
 
             $arrayDados{$cont} = array(
                 "id" => $rsDados['idusuario'],
-                "nome" => $rsDados['name'],
+                "nome" => $rsDados['nome'],
                 "usuario" => $rsDados['usuario'],
                 "email" => $rsDados['email'],
                 "senha" => $rsDados['senha']

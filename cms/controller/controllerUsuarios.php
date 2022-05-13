@@ -15,7 +15,7 @@ function inserirUsuario ($dadosUsuario){
 
             $arrayDados = array (
                 "nome" => $dadosUsuario['txtNome'],
-                "usuario" => $dadosUsuario['txtEmail'],
+                "usuario" => $dadosUsuario['txtUsuario'],
                 "email" => $dadosUsuario['txtEmail'],
                 "senha" => $dadosUsuario['txtSenha']
             );
@@ -28,8 +28,9 @@ function inserirUsuario ($dadosUsuario){
             if(insertUsuario($arrayDados)){ 
                 return true;
             }else{
+                
                 return array('idErro' => 1,
-                'message' => 'Não foi possivel inserir os dados no banco de dados');
+                'message' => 'Não foi possivel inserir os dados no banco de dados');die;
                 
             }
         }
@@ -75,6 +76,8 @@ function excluirUsuario($arrayDados){
     $id = $arrayDados['id'];
 
     if($id != 0 && !empty($id) && is_numeric($id)){
+
+        require_once("./model/bd/usuarios.php");
         if(deleteUsuario($id)){
             return true;
         }else{
